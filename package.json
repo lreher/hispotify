@@ -4,7 +4,7 @@
   "description": "Fully tracked Spotify history. Plus ability to export all playlists, liked songs and history to csv/json files.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lreher/hispotify#readme",
   "dependencies": {
+    "got": "^10.6.0",
     "tape": "^4.13.2"
   }
 }
