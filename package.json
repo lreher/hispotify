@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/lreher/hispotify/issues"
   },
-  "homepage": "https://github.com/lreher/hispotify#readme"
+  "homepage": "https://github.com/lreher/hispotify#readme",
+  "dependencies": {
+    "tape": "^4.13.2"
+  }
 }
