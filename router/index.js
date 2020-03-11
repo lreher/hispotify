@@ -7,7 +7,7 @@ module.exports = function(request, response) {
 
   switch(url) {
     case '/':
-      servePath = path.resolve(__dirname, "../client/index.html")
+      servePath = path.resolve(__dirname, "../client/static/index.html")
 
       response.writeHead(200, { 'Content-Type': 'text/html' })
       fs.createReadStream(servePath, 'utf-8').pipe(response)
@@ -15,7 +15,7 @@ module.exports = function(request, response) {
       break;
 
     case '/bundle.js':
-      servePath = path.resolve(__dirname, "../client/bundle.js")
+      servePath = path.resolve(__dirname, "../client/static/bundle.js")
 
       response.writeHead(200, { 'Content-Type': 'text/json' })
       fs.createReadStream(servePath, 'utf-8').pipe(response)
