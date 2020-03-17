@@ -22,6 +22,22 @@ module.exports = function(request, response) {
 
       break;
 
+    case 'mock':
+      var mockSet1 = {
+        hi: "friend",
+        how: "are you"
+      }
+
+      var mockSet2 = {
+        bye: "friend",
+        see: "ya later"
+      }
+
+      
+
+      response.writeHead(200);
+      response.end(JSON.stringify(devices));
+
     default:
       response.writeHead(400);
       response.end("Bad Request.");

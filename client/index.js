@@ -1,16 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom')
 
-// const element = React.createElement(
-//   'div',
-//   {className: 'greeting'},
-//   'Hello, world!'
-// );
-
-// BUT WHAT IF
-const element = <h1>Hey Buddy</h1>;
-
+const App = require('./components/app')
 
 document.addEventListener('DOMContentLoaded', function () {
-  ReactDOM.render(element, document.getElementById('root'))
+  ReactDOM.render(<App />, document.getElementById('root'))
 })
