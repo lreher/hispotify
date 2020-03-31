@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify index.js -o static/bundle.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] ]"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +16,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "babelify": "^10.0.0"
   }
 }
