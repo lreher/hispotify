@@ -22,6 +22,12 @@ module.exports = function(request, response) {
 
       break;
 
+    case '/style.css':
+      servePath = path.resolve(__dirname, "../client/static/style.css")
+
+      response.writeHead(200, { 'Content-Type': 'text/json' })
+      fs.createReadStream(servePath, 'utf-8').pipe(response)
+
     case 'mock':
       var mockSet1 = {
         hi: "friend",
@@ -32,8 +38,6 @@ module.exports = function(request, response) {
         bye: "friend",
         see: "ya later"
       }
-
-      
 
       response.writeHead(200);
       response.end(JSON.stringify(devices));

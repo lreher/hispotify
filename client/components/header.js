@@ -1,5 +1,7 @@
 const React = require('react');
 
 module.exports = function(props) {
-  return <h1>Hello, {props.name}</h1>
+  return <div class="header">
+      <h1>{props.name}</h1>
+  </div>
 }
