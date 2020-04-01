@@ -4,25 +4,32 @@ const ReactDOM = require('react-dom')
 const Header = require('./components/header')
 const Content = require('./components/content')
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "Johnny Appleseed",
-      age: 27
+      playlists: [
+        {
+          name: "Funky Playlist",
+          songs: ["song1", "song2"]
+        },
+        {
+          name: "Best Stuff",
+          songs: ["song3", "song4"]
+        }
+      ]
     };
   }
 
   render() {
     return <div>
       <Header></Header>
-      <Content name={this.state.username} age={this.state.age}></Content>
+      <Content playlists={this.state.playlists}></Content>
     </div>
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  ReactDOM.render(<App name="hey"/>, document.getElementById('root'))
+  ReactDOM.render(<App/>, document.getElementById('root'))
 })
