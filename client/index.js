@@ -2,6 +2,8 @@ const React = require('react');
 const ReactDOM = require('react-dom')
 
 const Header = require('./components/header')
+const Content = require('./components/content')
+
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +17,8 @@ class App extends React.Component {
 
   render() {
     return <div>
-      <Header name={this.state.username} age={this.state.age}></Header>
+      <Header></Header>
+      <Content name={this.state.username} age={this.state.age}></Content>
     </div>
   }
 }

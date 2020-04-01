@@ -1,0 +1,28 @@
+* { 
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo Thambi 2', cursive;
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+}
+
+.header {
+    background-color: rgba(137, 255, 68, 0.8);
+    padding: 1vh;
+    width: 100vw;
+    height: 5vh;
+    font-size: 1vh;
+}
+
+.content {
+    background-color: rgb(152, 230, 107, 0.3);
+    height: 95vh;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 3vh;
+}
