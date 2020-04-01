@@ -32,3 +32,18 @@ test('server loads bundle', function(t) {
     server.close()
   })
 })
+
+test('server loads style', function(t) {
+  t.plan(1)
+
+  var server = createServer()
+
+  got({
+    url: "http://localhost:8080/style.css",
+    method: "get"
+  }).then(function(result){
+    t.assert(result.headers['content-type'] === 'text/css')
+
+    server.close()
+  })
+})

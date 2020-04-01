@@ -25,8 +25,10 @@ module.exports = function(request, response) {
     case '/style.css':
       servePath = path.resolve(__dirname, "../client/static/style.css")
 
-      response.writeHead(200, { 'Content-Type': 'text/json' })
+      response.writeHead(200, { 'Content-Type': 'text/css' })
       fs.createReadStream(servePath, 'utf-8').pipe(response)
+      
+      break;
 
     case 'mock':
       var mockSet1 = {
