@@ -3,6 +3,8 @@ const React = require('react');
 module.exports = function(props) {
   console.log(props)
   return <div class="playlist">
-    <h3>{props.name}</h3>
+    <div class="playlist-title">
+      <h3>{props.name}</h3>
+    </div>
   </div>
 }

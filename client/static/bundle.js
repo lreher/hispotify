@@ -35,7 +35,9 @@ module.exports = function (props) {
   console.log(props);
   return (/*#__PURE__*/React.createElement("div", {
       "class": "playlist"
-    }, /*#__PURE__*/React.createElement("h3", null, props.name))
+    }, /*#__PURE__*/React.createElement("div", {
+      "class": "playlist-title"
+    }, /*#__PURE__*/React.createElement("h3", null, props.name)))
   );
 };
 
@@ -138,6 +140,15 @@ var App = /*#__PURE__*/function (_React$Component) {
         songs: ["song1", "song2"]
       }, {
         name: "Best Stuff",
+        songs: ["song3", "song4"]
+      }, {
+        name: "Ohno Playlist",
+        songs: ["song1", "song2"]
+      }, {
+        name: "Ohyes Stuff",
+        songs: ["song3", "song4"]
+      }, {
+        name: "Aya Done",
         songs: ["song3", "song4"]
       }]
     };

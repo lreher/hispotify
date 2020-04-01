@@ -9,7 +9,6 @@ module.exports = function(props) {
     return <Playlist key={playlist.name} name={playlist.name} songs={playlist.songs}></Playlist>
   })
 
-
   return <div class="playlists">
     {playlists}
   </div>
