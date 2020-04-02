@@ -29188,21 +29188,29 @@ if (process.env.NODE_ENV === 'production') {
 },{"./cjs/scheduler-tracing.development.js":16,"./cjs/scheduler-tracing.production.min.js":17,"_process":7}],22:[function(require,module,exports){
 "use strict";
 
+var runner;
 var clickX = 0;
+var mouseX = 0;
 var mouseDown = false;
+
+function scroll(scrollElement) {
+  scrollElement.scrollLeft += (mouseX - clickX) / 100;
+}
 
 module.exports = function (scrollElement) {
   scrollElement.addEventListener('mousedown', function (event) {
     mouseDown = true;
     clickX = event.clientX;
+    runner = setInterval(scroll, 10, scrollElement);
   });
   scrollElement.addEventListener('mousemove', function (event) {
     if (mouseDown) {
-      console.log("hmm");
+      mouseX = event.clientX;
     }
   });
   scrollElement.addEventListener('mouseup', function (event) {
     mouseDown = false;
+    clearInterval(runner);
   });
 };
 
