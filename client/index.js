@@ -4,6 +4,8 @@ const ReactDOM = require('react-dom')
 const Header = require('./components/header')
 const Content = require('./components/content')
 
+const scrollAssist = require('./utilities/scrollAssit')
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -44,4 +46,6 @@ class App extends React.Component {
 
 document.addEventListener('DOMContentLoaded', function () {
   ReactDOM.render(<App/>, document.getElementById('root'))
+
+  scrollAssist(document.getElementById("playlists"))
 })

@@ -8,7 +8,7 @@ var Playlists = require('./playlists');
 module.exports = function (props) {
   return (/*#__PURE__*/React.createElement("div", {
       "class": "content"
-    }, /*#__PURE__*/React.createElement(Playlists, {
+    }, /*#__PURE__*/React.createElement("h2", null, "Playlists"), /*#__PURE__*/React.createElement(Playlists, {
       playlists: props.playlists
     }))
   );
@@ -50,7 +50,6 @@ var Playlist = require('./playlist');
 
 module.exports = function (props) {
   var playlists = props.playlists.map(function (playlist) {
-    console.log(playlist);
     return (/*#__PURE__*/React.createElement(Playlist, {
         key: playlist.name,
         name: playlist.name,
@@ -59,6 +58,7 @@ module.exports = function (props) {
     );
   });
   return (/*#__PURE__*/React.createElement("div", {
+      id: "playlists",
       "class": "playlists"
     }, playlists)
   );
@@ -123,6 +123,8 @@ var Header = require('./components/header');
 
 var Content = require('./components/content');
 
+var scrollAssist = require('./utilities/scrollAssit');
+
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -170,9 +172,10 @@ var App = /*#__PURE__*/function (_React$Component) {
 
 document.addEventListener('DOMContentLoaded', function () {
   ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('root'));
+  scrollAssist(document.getElementById("playlists"));
 });
 
-},{"./components/content":1,"./components/header":2,"react":15,"react-dom":12}],6:[function(require,module,exports){
+},{"./components/content":1,"./components/header":2,"./utilities/scrollAssit":22,"react":15,"react-dom":12}],6:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -29182,4 +29185,25 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":16,"./cjs/scheduler-tracing.production.min.js":17,"_process":7}]},{},[5]);
+},{"./cjs/scheduler-tracing.development.js":16,"./cjs/scheduler-tracing.production.min.js":17,"_process":7}],22:[function(require,module,exports){
+"use strict";
+
+var clickX = 0;
+var mouseDown = false;
+
+module.exports = function (scrollElement) {
+  scrollElement.addEventListener('mousedown', function (event) {
+    mouseDown = true;
+    clickX = event.clientX;
+  });
+  scrollElement.addEventListener('mousemove', function (event) {
+    if (mouseDown) {
+      console.log("hmm");
+    }
+  });
+  scrollElement.addEventListener('mouseup', function (event) {
+    mouseDown = false;
+  });
+};
+
+},{}]},{},[5]);
