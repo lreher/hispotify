@@ -9,6 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
+    <form action="https://accounts.spotify.com/authorize" method="GET" id="spotifyLogin">
+      <input type="hidden" name="client_id" value="9aa2e7de31584c679c82b6c1e2f4238b">
+      <input type="hidden" name="response_type" value="code">
+      <input type="hidden" name="scope" value="playlist-modify-public user-read-playback-state streaming user-read-email user-modify-playback-state user-read-private">
+      <input type="hidden" name="redirect_uri" value="http://localhost:8081/callback">
+    </form>
+
     <script type="text/javascript" src="bundle.js"></script>
   </body>
 </html>

@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/lreher/hispotify#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
     "got": "^10.6.0",
     "tape": "^4.13.2"
   }
