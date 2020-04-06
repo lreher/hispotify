@@ -14,23 +14,16 @@ class App extends React.Component {
       playlists: [
         {
           name: "Funky Playlist",
-          songs: ["song1", "song2"]
-        },
-        {
-          name: "Best Stuff",
-          songs: ["song3", "song4"]
-        }, 
-        {
-          name: "Ohno Playlist",
-          songs: ["song1", "song2"]
-        },
-        {
-          name: "Ohyes Stuff",
-          songs: ["song3", "song4"]
-        },
-        {
-          name: "Aya Done",
-          songs: ["song3", "song4"]
+          songs: [{
+            title: "title",
+            album: "album",
+            artist:"artist"
+          }, 
+          {
+            title: "title",
+            album: "album",
+            artist:"artist"
+          }]
         }
       ]
     };
