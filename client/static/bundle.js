@@ -14,7 +14,7 @@ module.exports = function (props) {
   );
 };
 
-},{"./playlists":4,"react":16}],2:[function(require,module,exports){
+},{"./playlists":4,"react":17}],2:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -26,7 +26,7 @@ module.exports = function (props) {
   );
 };
 
-},{"react":16}],3:[function(require,module,exports){
+},{"react":17}],3:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -50,7 +50,7 @@ module.exports = function (props) {
   );
 };
 
-},{"./song":5,"react":16}],4:[function(require,module,exports){
+},{"./song":5,"react":17}],4:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -73,7 +73,7 @@ module.exports = function (props) {
   );
 };
 
-},{"./playlist":3,"react":16}],5:[function(require,module,exports){
+},{"./playlist":3,"react":17}],5:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -85,7 +85,45 @@ module.exports = function (props) {
   );
 };
 
-},{"react":16}],6:[function(require,module,exports){
+},{"react":17}],6:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+
+module.exports = function (props) {
+  return (/*#__PURE__*/React.createElement("form", {
+      action: "https://accounts.spotify.com/authorize",
+      method: "GET",
+      id: "spotifyLogin"
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "hidden",
+      name: "client_id",
+      value: "9aa2e7de31584c679c82b6c1e2f4238b"
+    }), /*#__PURE__*/React.createElement("input", {
+      type: "hidden",
+      name: "response_type",
+      value: "token"
+    }), /*#__PURE__*/React.createElement("input", {
+      type: "hidden",
+      name: "scope",
+      value: "user-read-playback-state user-read-email user-read-private"
+    }), /*#__PURE__*/React.createElement("input", {
+      type: "hidden",
+      name: "redirect_uri",
+      value: "http://localhost:8081/callback"
+    }), /*#__PURE__*/React.createElement("input", {
+      type: "hidden",
+      name: "state",
+      value: props.userID
+    }), /*#__PURE__*/React.createElement("button", {
+      type: "submit",
+      id: "searchButton",
+      value: "Spotify Login"
+    }, "Login"))
+  );
+};
+
+},{"react":17}],7:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -142,9 +180,13 @@ var ReactDOM = require('react-dom');
 
 var Header = require('./components/header');
 
+var Login = require('./components/spotifyLogin');
+
 var Content = require('./components/content');
 
-var scrollAssist = require('./utilities/scrollAssit');
+var scrollAssist = require('./utils/scrollAssit');
+
+var userID = require('./utils/createID')();
 
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
@@ -169,7 +211,8 @@ var App = /*#__PURE__*/function (_React$Component) {
           album: "album",
           artist: "artist"
         }]
-      }]
+      }],
+      userID: userID
     };
     return _this;
   }
@@ -177,8 +220,8 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return (/*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, null), /*#__PURE__*/React.createElement(Content, {
-          playlists: this.state.playlists
+      return (/*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, null), /*#__PURE__*/React.createElement(Login, {
+          userID: this.state.userID
         }))
       );
     }
@@ -188,11 +231,12 @@ var App = /*#__PURE__*/function (_React$Component) {
 }(React.Component);
 
 document.addEventListener('DOMContentLoaded', function () {
+  //document.getElementById('spotifyLogin').submit();
   ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('root'));
   scrollAssist(document.getElementById("playlists"));
 });
 
-},{"./components/content":1,"./components/header":2,"./utilities/scrollAssit":23,"react":16,"react-dom":13}],7:[function(require,module,exports){
+},{"./components/content":1,"./components/header":2,"./components/spotifyLogin":6,"./utils/createID":24,"./utils/scrollAssit":25,"react":17,"react-dom":14}],8:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -284,7 +328,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -470,7 +514,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -576,7 +620,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":10,"_process":8}],10:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":11,"_process":9}],11:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -590,7 +634,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (process){
 /** @license React v16.13.0
  * react-dom.development.js
@@ -25640,7 +25684,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this,require('_process'))
-},{"_process":8,"object-assign":7,"prop-types/checkPropTypes":9,"react":16,"scheduler":21,"scheduler/tracing":22}],12:[function(require,module,exports){
+},{"_process":9,"object-assign":8,"prop-types/checkPropTypes":10,"react":17,"scheduler":22,"scheduler/tracing":23}],13:[function(require,module,exports){
 /** @license React v16.13.0
  * react-dom.production.min.js
  *
@@ -25934,7 +25978,7 @@ exports.flushSync=function(a,b){if((W&(fj|gj))!==V)throw Error(u(187));var c=W;W
 exports.unmountComponentAtNode=function(a){if(!gk(a))throw Error(u(40));return a._reactRootContainer?(Nj(function(){ik(null,null,a,!1,function(){a._reactRootContainer=null;a[Od]=null})}),!0):!1};exports.unstable_batchedUpdates=Mj;exports.unstable_createPortal=function(a,b){return kk(a,b,2<arguments.length&&void 0!==arguments[2]?arguments[2]:null)};
 exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!gk(c))throw Error(u(200));if(null==a||void 0===a._reactInternalFiber)throw Error(u(38));return ik(a,b,c,!1,d)};exports.version="16.13.0";
 
-},{"object-assign":7,"react":16,"scheduler":21}],13:[function(require,module,exports){
+},{"object-assign":8,"react":17,"scheduler":22}],14:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -25976,7 +26020,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":11,"./cjs/react-dom.production.min.js":12,"_process":8}],14:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":12,"./cjs/react-dom.production.min.js":13,"_process":9}],15:[function(require,module,exports){
 (function (process){
 /** @license React v16.13.0
  * react.development.js
@@ -27892,7 +27936,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this,require('_process'))
-},{"_process":8,"object-assign":7,"prop-types/checkPropTypes":9}],15:[function(require,module,exports){
+},{"_process":9,"object-assign":8,"prop-types/checkPropTypes":10}],16:[function(require,module,exports){
 /** @license React v16.13.0
  * react.production.min.js
  *
@@ -27919,7 +27963,7 @@ key:d,ref:g,props:e,_owner:k}};exports.createContext=function(a,b){void 0===b&&(
 exports.lazy=function(a){return{$$typeof:A,_ctor:a,_status:-1,_result:null}};exports.memo=function(a,b){return{$$typeof:z,type:a,compare:void 0===b?null:b}};exports.useCallback=function(a,b){return Z().useCallback(a,b)};exports.useContext=function(a,b){return Z().useContext(a,b)};exports.useDebugValue=function(){};exports.useEffect=function(a,b){return Z().useEffect(a,b)};exports.useImperativeHandle=function(a,b,c){return Z().useImperativeHandle(a,b,c)};
 exports.useLayoutEffect=function(a,b){return Z().useLayoutEffect(a,b)};exports.useMemo=function(a,b){return Z().useMemo(a,b)};exports.useReducer=function(a,b,c){return Z().useReducer(a,b,c)};exports.useRef=function(a){return Z().useRef(a)};exports.useState=function(a){return Z().useState(a)};exports.version="16.13.0";
 
-},{"object-assign":7}],16:[function(require,module,exports){
+},{"object-assign":8}],17:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -27930,7 +27974,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":14,"./cjs/react.production.min.js":15,"_process":8}],17:[function(require,module,exports){
+},{"./cjs/react.development.js":15,"./cjs/react.production.min.js":16,"_process":9}],18:[function(require,module,exports){
 (function (process){
 /** @license React v0.19.0
  * scheduler-tracing.development.js
@@ -28283,7 +28327,7 @@ exports.unstable_wrap = unstable_wrap;
 }
 
 }).call(this,require('_process'))
-},{"_process":8}],18:[function(require,module,exports){
+},{"_process":9}],19:[function(require,module,exports){
 /** @license React v0.19.0
  * scheduler-tracing.production.min.js
  *
@@ -28295,7 +28339,7 @@ exports.unstable_wrap = unstable_wrap;
 
 'use strict';var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_subscribe=function(){};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_unsubscribe=function(){};exports.unstable_wrap=function(a){return a};
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 (function (process){
 /** @license React v0.19.0
  * scheduler.development.js
@@ -29157,7 +29201,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 }
 
 }).call(this,require('_process'))
-},{"_process":8}],20:[function(require,module,exports){
+},{"_process":9}],21:[function(require,module,exports){
 /** @license React v0.19.0
  * scheduler.production.min.js
  *
@@ -29180,7 +29224,7 @@ exports.unstable_getCurrentPriorityLevel=function(){return R};exports.unstable_g
 exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();if("object"===typeof c&&null!==c){var e=c.delay;e="number"===typeof e&&0<e?d+e:d;c="number"===typeof c.timeout?c.timeout:Y(a)}else c=Y(a),e=d;c=e+c;a={id:P++,callback:b,priorityLevel:a,startTime:e,expirationTime:c,sortIndex:-1};e>d?(a.sortIndex=e,J(O,a),null===L(N)&&a===L(O)&&(U?h():U=!0,g(W,e-d))):(a.sortIndex=c,J(N,a),T||S||(T=!0,f(X)));return a};
 exports.unstable_shouldYield=function(){var a=exports.unstable_now();V(a);var b=L(N);return b!==Q&&null!==Q&&null!==b&&null!==b.callback&&b.startTime<=a&&b.expirationTime<Q.expirationTime||k()};exports.unstable_wrapCallback=function(a){var b=R;return function(){var c=R;R=b;try{return a.apply(this,arguments)}finally{R=c}}};
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29191,7 +29235,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":19,"./cjs/scheduler.production.min.js":20,"_process":8}],22:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":20,"./cjs/scheduler.production.min.js":21,"_process":9}],23:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29202,7 +29246,19 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":17,"./cjs/scheduler-tracing.production.min.js":18,"_process":8}],23:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":18,"./cjs/scheduler-tracing.production.min.js":19,"_process":9}],24:[function(require,module,exports){
+"use strict";
+
+// naive uuid generation
+module.exports = function createUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0,
+        v = c == 'x' ? r : r & 0x3 | 0x8;
+    return v.toString(16);
+  });
+};
+
+},{}],25:[function(require,module,exports){
 "use strict";
 
 var runner;
@@ -29239,4 +29295,4 @@ module.exports = function (scrollElement) {
   });
 };
 
-},{}]},{},[6]);
+},{}]},{},[7]);

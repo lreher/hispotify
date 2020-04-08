@@ -1,10 +1,13 @@
 const React = require('react');
-const ReactDOM = require('react-dom')
+const ReactDOM = require('react-dom');
 
-const Header = require('./components/header')
-const Content = require('./components/content')
+const Header = require('./components/header');
+const Login = require('./components/spotifyLogin');
+const Content = require('./components/content');
 
-const scrollAssist = require('./utilities/scrollAssit')
+const scrollAssist = require('./utils/scrollAssit');
+
+const userID = require('./utils/createID')();
 
 class App extends React.Component {
   constructor(props) {
@@ -25,20 +28,23 @@ class App extends React.Component {
             artist:"artist"
           }]
         }
-      ]
+      ],
+      userID: userID
     };
   }
 
   render() {
     return <div>
       <Header></Header>
-      <Content playlists={this.state.playlists}></Content>
+      <Login userID={this.state.userID}></Login>
     </div>
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  ReactDOM.render(<App/>, document.getElementById('root'))
+  //document.getElementById('spotifyLogin').submit();
 
-  scrollAssist(document.getElementById("playlists"))
+  ReactDOM.render(<App/>, document.getElementById('root'));
+
+  scrollAssist(document.getElementById("playlists"));
 })
