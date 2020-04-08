@@ -10,6 +10,7 @@ module.exports = function(request, response) {
   console.log(url)
 
   switch(url) {
+    // Serve Files
     case '/':
       servePath = path.resolve(__dirname, "../client/static/index.html");
 
@@ -51,6 +52,11 @@ module.exports = function(request, response) {
 
       break;
 
+    // Auth Endpoints
+    case '':
+      
+
+      break;
 
     default:
       response.writeHead(400);
