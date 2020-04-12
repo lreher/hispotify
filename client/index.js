@@ -6,7 +6,6 @@ const Login = require('./components/spotifyLogin');
 const Content = require('./components/content');
 
 const scrollAssist = require('./utils/scrollAssit');
-
 const userID = require('./utils/createID')();
 
 class App extends React.Component {

@@ -39,22 +39,16 @@ module.exports = function(request, response) {
     case (url.match(/callback/) || {}).input:
       code = url.replace("/callback?code=", "");
 
-      auth.authorize(code, function(error, authorization) {
-        if (error) {;
-          response.writeHead(500);
-          response.end("Failed to Authenticate to Spotify");
-          return;
-        }
+      console.log(code)
 
-        response.writeHead(302, { 'Location': '.' });
-        response.end();
-      })
+      response.writeHead(302, { 'Location': '.' });
+      response.end();
 
       break;
 
     // Auth Endpoints
     case '':
-      
+
 
       break;
 
